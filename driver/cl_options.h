@@ -86,6 +86,9 @@ extern cl::opt<bool> disableLinkerStripDead;
 extern cl::opt<unsigned char> defaultToHiddenVisibility;
 extern cl::opt<bool> noPLT;
 extern cl::opt<bool> useDIP25;
+#if LDC_LLVM_VER >= 1200
+extern cl::opt<bool> stackClashProtection;
+#endif
 
 // Math options
 extern bool fFastMath;

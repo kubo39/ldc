@@ -690,6 +690,12 @@ void DtoDeclareFunction(FuncDeclaration *fdecl, const bool willDefine) {
     func->addFnAttr(LLAttribute::NoReturn);
   }
 
+#if LDC_LLVM_VER >= 1200
+  if (opts::stackClashProtection) {
+    func->addFnAttr("probe-stack", "inline-asm");
+  }
+#endif
+
   applyFuncDeclUDAs(fdecl, irFunc);
 
   // parameter attributes

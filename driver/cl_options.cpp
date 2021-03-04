@@ -511,6 +511,12 @@ cl::opt<bool> noPLT(
     "fno-plt", cl::ZeroOrMore,
     cl::desc("Do not use the PLT to make function calls"));
 
+#if LDC_LLVM_VER >= 1200
+cl::opt<bool> stackClashProtection(
+    "fstack-clash-protection", cl::ZeroOrMore,
+    cl::desc("Enable stack clash protection"));
+#endif
+
 // Math options
 bool fFastMath; // Storage for the dynamically created ffast-math option.
 llvm::FastMathFlags defaultFMF;
