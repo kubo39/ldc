@@ -917,7 +917,12 @@ void registerPredefinedTargetVersions() {
       VersionCondition::addPredefinedGlobalIdent("Android");
     } else {
       llvm::StringRef osName = triple.getOSName();
-      if (osName.empty() || osName == "unknown" || osName == "none") {
+      if (osName == "zephyr") {
+        VersionCondition::addPredefinedGlobalIdent("Zephyr");
+        if (global.params.isNewlibEnvironment) {
+            VersionCondition::addPredefinedGlobalIdent("CRuntime_Newlib");
+        }
+      } else if (osName.empty() || osName == "unknown" || osName == "none") {
         VersionCondition::addPredefinedGlobalIdent("FreeStanding");
         if (global.params.isNewlibEnvironment) {
             VersionCondition::addPredefinedGlobalIdent("CRuntime_Newlib");
