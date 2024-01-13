@@ -163,6 +163,14 @@ unsigned DtoAlignment(VarDeclaration *vd) {
   return explicitAlignValue;
 }
 
+unsigned DtoAlignment(FuncDeclaration *fd) {
+  const auto alignment = fd->alignment;
+  if (alignment.isUnknown()) {
+    return 0;
+  }
+  return alignment.get();
+}
+
 /******************************************************************************
  * ALLOCA HELPERS
  ******************************************************************************/

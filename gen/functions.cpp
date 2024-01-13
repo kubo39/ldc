@@ -1242,6 +1242,11 @@ void DtoDefineFunction(FuncDeclaration *fd, bool linkageAvailableExternally) {
     func->addFnAttr("use-sample-profile");
   }
 
+  unsigned alignment = DtoAlignment(fd);
+  if (alignment != 0) {
+    func->setAlignment(llvm::MaybeAlign(alignment));
+  }
+
   llvm::BasicBlock *beginbb =
       llvm::BasicBlock::Create(gIR->context(), "", func);
 

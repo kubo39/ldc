@@ -3316,6 +3316,11 @@ else // !IN_LLVM
 version (IN_LLVM)
 {
         funcdecl.emitInstrumentation = sc.emitInstrumentation;
+        if (sc.aligndecl) {
+            funcdecl.alignment = sc.alignment();
+        } else {
+            funcdecl.alignment.setUnknown();
+        }
 }
 
         if (!funcdecl.originalType)

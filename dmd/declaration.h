@@ -576,6 +576,8 @@ public:
     // Whether to emit instrumentation code if -fprofile-instr-generate is specified,
     // the value is set with pragma(LDC_profile_instr, true|false)
     bool emitInstrumentation;
+
+    structalign_t alignment;
 #endif
 
     VarDeclaration *vresult;            // result variable for out contracts

@@ -331,6 +331,8 @@ version (IN_LLVM)
     // Whether to emit instrumentation code if -fprofile-instr-generate is specified,
     // the value is set with pragma(LDC_profile_instr, true|false)
     bool emitInstrumentation = true;
+
+    structalign_t alignment;
 }
 
     VarDeclaration vresult;             /// result variable for out contracts

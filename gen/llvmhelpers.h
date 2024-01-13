@@ -38,6 +38,7 @@ void DtoDeleteArray(const Loc &loc, DValue *arr);
 
 unsigned DtoAlignment(Type *type);
 unsigned DtoAlignment(VarDeclaration *vd);
+unsigned DtoAlignment(FuncDeclaration *fd);
 
 // emit an alloca
 llvm::AllocaInst *DtoAlloca(Type *type, const char *name = "");
