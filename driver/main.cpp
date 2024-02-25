@@ -780,6 +780,11 @@ void registerPredefinedTargetVersions() {
     registerPredefinedFloatABI("LoongArch_SoftFloat", "LoongArch_HardFloat");
     break;
 #endif // LDC_LLVM_VER >= 1600
+#if LDC_LLVM_VER >= 1700
+  case llvm::Triple::xtensa:
+    VersionCondition::addPredefinedGlobalIdent("Xtensa");
+    break;
+#endif // LDC_LLM_VER >= 1700
   default:
     warning(Loc(), "unknown target CPU architecture: %s",
             triple.getArchName().str().c_str());

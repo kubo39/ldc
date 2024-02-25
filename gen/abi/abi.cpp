@@ -288,6 +288,10 @@ TargetABI *TargetABI::getTarget() {
   case llvm::Triple::loongarch64:
     return getLoongArch64TargetABI();
 #endif // LDC_LLVM_VER >= 1600
+#if LDC_LLVM_VER >= 1700
+  case llvm::Triple::xtensa:
+    return getXtensaTargetABI();
+#endif // LDC_LLVM_VER >= 1700
   default:
     Logger::cout() << "WARNING: Unknown ABI, guessing...\n";
     return new UnknownTargetABI;

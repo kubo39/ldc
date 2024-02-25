@@ -287,6 +287,10 @@ static std::string getLoongArch64TargetCPU(const llvm::Triple &triple) {
   return "generic-la64";
 }
 
+static std::string getXtensaTargetCPU(const llvm::Triple &triple) {
+  return "esp32";
+}
+
 /// Returns the LLVM name of the default CPU for the provided target triple.
 static std::string getTargetCPU(const llvm::Triple &triple) {
   switch (triple.getArch()) {
@@ -314,6 +318,10 @@ static std::string getTargetCPU(const llvm::Triple &triple) {
   case llvm::Triple::loongarch64:
     return getLoongArch64TargetCPU(triple);
 #endif // LDC_LLVM_VER >= 1600
+#if LDC_LLVM_VER >= 1700
+  case llvm::Triple::xtensa:
+    return getXtensaTargetCPU(triple);
+#endif // LDC_LLVM_VER >= 1700
   }
 }
 
