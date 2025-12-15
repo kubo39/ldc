@@ -704,6 +704,10 @@ void ArgsBuilder::addDefaultPlatformLibs() {
   switch (triple.getOS()) {
   case llvm::Triple::Linux:
     addSoname = true;
+    if (triple.isMusl()) {
+      args.push_back("-lm");
+      break;
+    }
     if (triple.getEnvironment() == llvm::Triple::Android) {
       args.push_back("-ldl");
       args.push_back("-lm");
